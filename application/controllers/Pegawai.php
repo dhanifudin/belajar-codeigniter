@@ -32,13 +32,21 @@ class Pegawai extends CI_Controller {
     public function store()
     {
         $data = ['nama' => $this->input->post('nama')];
-        $rules = ['nama', 'Nama', 'trim|required'];
+        $rules = [
+            [
+                'field' => 'nama',
+                'label' => 'Nama',
+                'rules' => 'trim|required'
+            ]
+        ];
+        // Untuk rule sederhana bisa dengan menggunakan
+        // $this->form_validation->set_rules('nama', 'Nama', 'trim|required');
         $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run()) {
             $result = $this->pegawai_model->insert($data);
             if ($result) {
-                redirect('pegawai/index');
+                redirect('pegawai');
             }
         } else {
             redirect('pegawai/create');
@@ -65,10 +73,33 @@ class Pegawai extends CI_Controller {
 
     public function update($id)
     {
+        $data = [ 'nama' => $this->input->post('nama') ];
+        $rules = [
+            [
+                'field' => 'nama',
+                'label' => 'Nama',
+                'rules' => 'trim|required'
+            ]
+        ];
+        $this->form_validation->set_rules($rules);
+        if ($this->form_validation->run()) {
+            $result = $this->pegawai_model->update($id, $data);
+            if ($result) {
+                redirect('pegawai');
+            }
+        } else {
+            redirect('pegawai/edit/'.$id);
+        }
     }
 
-    public function destroy()
+    public function destroy($id)
     {
+        $result = $this->pegawai_model->delete($id);
+        if ($result) {
+            redirect('pegawai');
+        } else {
+            redirect('pegawai');
+        }
     }
 
 }

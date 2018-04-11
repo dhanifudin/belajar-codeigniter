@@ -4,7 +4,7 @@
   <legend>Tambah Data Pegawai</legend>
   <div class="col-xs-12 col-sm-12 col-md-12">
   <?php echo form_open('pegawai/update/'.$data->id); ?>
-
+    <?php echo form_hidden('id', $data->id) ?>
     <div class="form-group">
       <label for="Nama">Nama</label>
       <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" value="<?php echo $data->nama ?>">

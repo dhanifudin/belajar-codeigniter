@@ -14,13 +14,6 @@ class Pegawai_model extends CI_Model {
         return $result;
     }
 
-    public function update($id)
-    {
-        $data = array('nama' => $this->input->post('nama'));
-        $this->db->update('pegawai', $data)
-            ->where('id', $id);
-    }
-
     public function show($id)
     {
         $this->db->where('id', $id);
@@ -28,10 +21,20 @@ class Pegawai_model extends CI_Model {
         return $query->row();
     }
 
-    public function deletePegawaiById($id)
+    public function update($id, $data)
     {
-        $this->db->delete('pegawai')
-            ->where('id', $id);
+        $this->db->set($data);
+        $this->db->where('id', $id);
+        $result = $this->db->update('pegawai');
+        return $result;
+    }
+
+
+    public function delete($id)
+    {
+        $this->db->where('id', $id);
+        $result = $this->db->delete('pegawai');
+        return $result;
     }
 
 }
