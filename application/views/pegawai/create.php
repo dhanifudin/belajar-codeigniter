@@ -12,7 +12,7 @@
 
     <a class="btn btn-info" href="<?php echo site_url('pegawai/') ?>">Kembali</a>
     <button type="submit" class="btn btn-primary">OK</button>
-  <?php echo form_close(); ?>
+  <?php echo form_close() ?>
   </div>
 </div>
 

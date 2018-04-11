@@ -27,10 +27,12 @@
             </a>
           </td>
           <td>
+            <?php echo form_open('pegawai/destroy/'.$row->id)  ?>
             <a class="btn btn-info" href="<?php echo site_url('pegawai/edit/'.$row->id) ?>">
               Ubah
             </a>
-            <button class="btn btn-danger">Hapus</button>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
+            <?php echo form_close() ?>
           </td>
         </tr>
         <?php } ?>
