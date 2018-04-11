@@ -8,7 +8,7 @@ class Pegawai_model extends CI_Model {
         return $query->result();
     }
 
-    public function insert($data = array())
+    public function insert($data = [])
     {
         $result = $this->db->insert('pegawai', $data);
         return $result;
@@ -21,7 +21,7 @@ class Pegawai_model extends CI_Model {
         return $query->row();
     }
 
-    public function update($id, $data)
+    public function update($id, $data = [])
     {
         $this->db->set($data);
         $this->db->where('id', $id);
